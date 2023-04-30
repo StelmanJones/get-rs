@@ -2,13 +2,10 @@ mod utils;
 use anstyle::Style;
 use clap::{arg, builder::Styles, command, parser, value_parser, Arg, ArgAction};
 use reqwest::Url;
-use std::{
-    path::{Path, PathBuf},
-    time::Duration,
-};
+use std::path::PathBuf;
 use trauma::{
     download::Download,
-    downloader::{self, DownloaderBuilder},
+    downloader::DownloaderBuilder,
     Error,
 };
 

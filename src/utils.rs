@@ -31,22 +31,11 @@ pub fn display_summary(summaries: &[Summary]) {
         .load_preset(comfy_table::presets::NOTHING)
         .set_header(header);
     summaries.iter().for_each(|s| {
-        let mut error = String::new();
         let status = match s.status() {
             Status::Success => String::from("OK").green().to_string(),
-            Status::Fail(s) => {
-                error = s.to_string();
-                error.truncate(50);
-                if error.len() <= 50 {
-                    error.push_str("...");
-                }
-                String::from("ERROR").red().to_string()
-            }
+            Status::Fail(s) => String::from("ERROR").red().to_string(),
             Status::NotStarted => String::from("🔜"),
-            Status::Skipped(s) => {
-                error = s.to_string();
-                String::from("⏭️")
-            }
+            Status::Skipped(s) => String::from("⏭️"),
         };
         table.add_row(vec![&s.download().filename, &status]);
     });
