@@ -13,7 +13,7 @@ use trauma::{
 async fn main() -> Result<(), Error> {
     // Clap CLI command
     let get = command!()
-        .version("0.1.1")
+        .version("0.1.2")
         .author("Oscar N. <github.com/StelmanJones>")
         .about("No BS download tool. Does one thing and one thing only.")
         .arg(
