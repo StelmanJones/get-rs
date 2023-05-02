@@ -41,3 +41,19 @@ pub fn display_summary(summaries: &[Summary]) {
     });
     println!("{table}");
 }
+
+pub fn auto_update() -> Result<(), Box<dyn std::error::Error>> {
+    let status = self_update::backends::github::Update::configure()
+        .repo_name("StelmanJones")
+        .repo_name("get-rs")
+        .bin_name("get")
+        .show_download_progress(true)
+        .current_version(self_update::cargo_crate_version!())
+        .build()?
+        .update()?;
+    match status.uptodate() {
+        true => println!("Update status: `{}`!", status.version().green()),
+        false => println!("Update status: `{}`!", status.version().red()),
+    }
+    Ok(())
+}

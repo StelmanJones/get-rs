@@ -13,7 +13,7 @@ use trauma::{
 async fn main() -> Result<(), Error> {
     // Clap CLI command
     let get = command!()
-        .version("0.1.0")
+        .version("0.1.1")
         .author("Oscar N. <github.com/StelmanJones>")
         .about("No BS download tool. Does one thing and one thing only.")
         .arg(
@@ -65,6 +65,15 @@ async fn main() -> Result<(), Error> {
         )
         .get_matches();
 
+
+
+    //Run auto-update
+    if let Err(e) = utils::auto_update() {
+        panic!("Autoupdate error: {}", e)
+    }
+
+
+
     // Parsing arguments
 
     let mut downloads: Vec<Download> = Vec::new();
@@ -98,6 +107,8 @@ async fn main() -> Result<(), Error> {
         
         .build();
     let summaries = downloader.download(&downloads).await;
+    
+    
 
     if get.get_one::<bool>("summary").expect("Error parsing summary flag.").to_owned() == true {
         utils::display_summary(&summaries)

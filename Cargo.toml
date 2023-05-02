@@ -1,6 +1,6 @@
 [package]
 name = "get"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -13,4 +13,5 @@ clap = { version = "4.2.5", features = ["cargo", "wrap_help", "color", "unstable
 anstyle = "1.0.0"
 comfy-table = "6.1.4"
 owo-colors = "3.5.0"
-
+flate2 = "1.0.26"
+self_update = "0.36.0"
