@@ -44,7 +44,7 @@ pub fn display_summary(summaries: &[Summary]) {
 
 pub fn auto_update() -> Result<(), Box<dyn std::error::Error>> {
     let status = self_update::backends::github::Update::configure()
-        .repo_name("StelmanJones")
+        .repo_owner("StelmanJones")
         .repo_name("get-rs")
         .bin_name("get")
         .show_download_progress(true)
